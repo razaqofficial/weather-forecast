@@ -5,6 +5,8 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express();
+const port = process.env.PORT || 8080
+
 const publicPathDirectory = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../views')
 const partialPath = path.join(__dirname, '../views/partials')
@@ -16,9 +18,6 @@ hbs.registerPartials(partialPath)
 
 //Set up static dir path
 app.use(express.static(publicPathDirectory))
-
-
-const port = 8080
 
 app.get('', (req, res) => {
    res.render('index', {
